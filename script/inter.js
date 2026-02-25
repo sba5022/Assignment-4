@@ -72,15 +72,40 @@
 //         }
 //     });
 // });
-
+let interviewList = [];
+let RejectedList = [];
 
 let total = document.getElementById('total');
 let interviewCount = document.getElementById('interview-count');
 let rejectedCount = document.getElementById('rejected-count');
 console.log(total);
 const allCardsSection = document.getElementById('allCards');
+const mainSection = document.querySelector('section');
+console.log(mainSection)
 
 function calculateCount() {
-    total.innerText = allCardsSection.children.length
+    total.innerText = allCardsSection.children.length;
+    interviewCount.innerText = interviewList.length;
+    rejectedCount.innerText = rejectedCount.length;
 };
 calculateCount();
+
+const allFilterBtn = document.getElementById('all-filter-btn')
+const interviewFilterBtn = document.getElementById('interview-filter-btn')
+const rejectedFilterBtn = document.getElementById('rejected-filter-btn')
+function toggleStyle(id) {
+    allFilterBtn.classList.remove('bg-info', 'text-base-100')
+    interviewFilterBtn.classList.remove('bg-info', 'text-base-100')
+    rejectedFilterBtn.classList.remove('bg-info', 'text-base-100')
+
+
+    allFilterBtn.classList.add('bg-gray-300', 'text-black')
+    interviewFilterBtn.classList.add('bg-gray-300', 'text-black')
+    rejectedFilterBtn.classList.add('bg-gray-300', 'text-black')
+
+    console.log(id);
+    const selected = document.getElementById(id);
+    console.log(selected);
+    selected.classList.remove('bg-gray-300', 'text-black');
+    selected.classList.add('bg-info', 'text-base-100')
+}
