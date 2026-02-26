@@ -118,6 +118,11 @@ function toggleStyle(id) {
         allCardsSection.classList.remove('hidden')
         filterSelection.classList.add('hidden')
     }
+    else if (id == 'rejected-filter-btn') {
+        allCardsSection.classList.add('hidden');
+        filterSelection.classList.remove('hidden');
+
+    }
 }
 
 mainSection.addEventListener('click', function (event) {
