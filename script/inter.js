@@ -81,12 +81,13 @@ let rejectedCount = document.getElementById('rejected-count');
 console.log(total);
 const allCardsSection = document.getElementById('allCards');
 const mainSection = document.querySelector('section');
-console.log(mainSection)
+const filterSelection = document.getElementById('filtered-section');
+console.log(mainSection);
 
 function calculateCount() {
     total.innerText = allCardsSection.children.length;
     interviewCount.innerText = interviewList.length;
-    rejectedCount.innerText = rejectedCount.length;
+    rejectedCount.innerText = RejectedList.length;
 };
 calculateCount();
 
@@ -108,4 +109,161 @@ function toggleStyle(id) {
     console.log(selected);
     selected.classList.remove('bg-gray-300', 'text-black');
     selected.classList.add('bg-info', 'text-base-100')
+
+    if (id == 'interview-filter-btn') {
+        allCardsSection.classList.add('hidden');
+        filterSelection.classList.remove('hidden')
+    }
+    else if (id == 'all-filter-btn') {
+        allCardsSection.classList.remove('hidden')
+        filterSelection.classList.add('hidden')
+    }
+}
+
+mainSection.addEventListener('click', function (event) {
+
+    if (event.target.closest('#inter-btn')) {
+        const parentNode = event.target.parentNode.parentNode;
+        const cardName = parentNode.querySelector('.card').innerText;
+        const secondN = parentNode.querySelector('.second').innerText;
+        const dotN = parentNode.querySelector('.dot').innerText;
+        const paraN = parentNode.querySelector('.para').innerText;
+        const statusN = parentNode.querySelector('.status').innerText;
+        parentNode.querySelector('.status').innerText = 'Interview';
+        const cardInfo = {
+            cardName,
+            secondN,
+            dotN,
+            paraN,
+            statusN: 'Interview',
+        };
+        console.log(cardInfo);
+
+
+        const cardExists = interviewList.find(item => item.cardName == cardInfo.cardName)
+
+        if (!cardExists) {
+            interviewList.push(cardInfo)
+        }
+        renderInterview();
+        calculateCount();
+    }
+    else if (event.target.closest('#rbtn-one')) {
+        const parentNode = event.target.parentNode.parentNode;
+        const cardName = parentNode.querySelector('.card').innerText;
+        const secondN = parentNode.querySelector('.second').innerText;
+        const dotN = parentNode.querySelector('.dot').innerText;
+        const paraN = parentNode.querySelector('.para').innerText;
+        const statusN = parentNode.querySelector('.status').innerText;
+        parentNode.querySelector('.status').innerText = 'Reject';
+        const cardInfo = {
+            cardName,
+            secondN,
+            dotN,
+            paraN,
+            statusN: 'Reject',
+        };
+        console.log(cardInfo);
+
+
+        const cardExists = RejectedList.find(item => item.cardName == cardInfo.cardName)
+
+        if (!cardExists) {
+            RejectedList.push(cardInfo)
+        }
+        renderRejected();
+        calculateCount();
+    }
+
+})
+
+function renderInterview() {
+    filterSelection.innerText = ''
+    for (let interview of interviewList) {
+        console.log(interview);
+        let div = document.createElement('div');
+        div.className = 'allcard w-[1000px] h-[310px] bg-base-100 rounded-md';
+        div.innerHTML = `
+     <div class="allcard w-[1000px] h-[310px] bg-base-100 rounded-md">
+                <div class="mx-[20px] leading-relaxed">
+                    <div>
+                        <button class="mx-230 border border-base-200 p-2 rounded-full btn btn-base-200"><i
+                                class="fa-regular fa-trash-can"></i></button>
+                    </div>
+                    <div>
+                        <h4 class="card text-neutral text-[18px] font-semibold">${interview.cardName}</h4>
+                        <h5 class="second text-[#64748B] font-semibold">React Native Developer</h5>
+                        <br>
+
+                        <p class="dot text-[#64748B]">Remote • Full-time • $130,000 - $175,000</p>
+                        <br>
+
+                        <h3 class="status bg-sky-100 w-[113px] h-[36px] text-[14px] ">${interview.statusN}</h3>
+                        <br>
+
+
+                        <p class="para text-neutral">Build cross-platform mobile applications using React Native. Work
+                            on
+                            products used by millions of
+                            users worldwide.</p>
+                        <br>
+
+
+                        <div class="flex flex-cols gap-4">
+                            <button id="inter-btn"
+                                class="  btn btn-accent btn-soft text-accent w-[100px] h-[36px] border border-accent">interview</button>
+                            <button id="rbtn-one"
+                                class="btn btn-error btn-soft text-error w-[100px] h-[36px] border border-error">Rejected</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    `
+        filterSelection.appendChild(div)
+    }
+}
+function renderRejected() {
+    filterSelection.innerText = ''
+    for (let Rejected of RejectedList) {
+        console.log(Rejected);
+        let div = document.createElement('div');
+        div.className = 'allcard w-[1000px] h-[310px] bg-base-100 rounded-md';
+        div.innerHTML = `
+     <div class="allcard w-[1000px] h-[310px] bg-base-100 rounded-md">
+                <div class="mx-[20px] leading-relaxed">
+                    <div>
+                        <button class="mx-230 border border-base-200 p-2 rounded-full btn btn-base-200"><i
+                                class="fa-regular fa-trash-can"></i></button>
+                    </div>
+                    <div>
+                        <h4 class="card text-neutral text-[18px] font-semibold">${Rejected.cardName}</h4>
+                        <h5 class="second text-[#64748B] font-semibold">React Native Developer</h5>
+                        <br>
+
+                        <p class="dot text-[#64748B]">Remote • Full-time • $130,000 - $175,000</p>
+                        <br>
+
+                        <h3 class="status bg-sky-100 w-[113px] h-[36px] text-[14px] ">${Rejected.statusN}</h3>
+                        <br>
+
+
+                        <p class="para text-neutral">Build cross-platform mobile applications using React Native. Work
+                            on
+                            products used by millions of
+                            users worldwide.</p>
+                        <br>
+
+
+                        <div class="flex flex-cols gap-4">
+                            <button id="inter-btn"
+                                class="  btn btn-accent btn-soft text-accent w-[100px] h-[36px] border border-accent">interview</button>
+                            <button id="rbtn-one"
+                                class="btn btn-error btn-soft text-error w-[100px] h-[36px] border border-error">Rejected</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    `
+        filterSelection.appendChild(div)
+    }
 }
