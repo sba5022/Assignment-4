@@ -74,6 +74,7 @@
 // });
 let interviewList = [];
 let RejectedList = [];
+let currentStatus = 'all';
 
 let total = document.getElementById('total');
 let interviewCount = document.getElementById('interview-count');
@@ -106,13 +107,15 @@ function toggleStyle(id) {
 
     console.log(id);
     const selected = document.getElementById(id);
-    console.log(selected);
+    currentStatus = id;
+    // console.log(selected);
     selected.classList.remove('bg-gray-300', 'text-black');
     selected.classList.add('bg-info', 'text-base-100')
 
     if (id == 'interview-filter-btn') {
         allCardsSection.classList.add('hidden');
-        filterSelection.classList.remove('hidden')
+        filterSelection.classList.remove('hidden');
+        renderInterview();
     }
     else if (id == 'all-filter-btn') {
         allCardsSection.classList.remove('hidden')
@@ -121,7 +124,7 @@ function toggleStyle(id) {
     else if (id == 'rejected-filter-btn') {
         allCardsSection.classList.add('hidden');
         filterSelection.classList.remove('hidden');
-
+        renderRejected();
     }
 }
 
@@ -150,7 +153,11 @@ mainSection.addEventListener('click', function (event) {
         if (!cardExists) {
             interviewList.push(cardInfo)
         }
-        renderInterview();
+        RejectedList = RejectedList.filter(item => item.cardName !== cardInfo.cardName);
+        if (currentStatus == 'rejected-filter-btn') {
+            renderRejected()
+        }
+
         calculateCount();
     }
     else if (event.target.closest('#rbtn-one')) {
@@ -176,7 +183,14 @@ mainSection.addEventListener('click', function (event) {
         if (!cardExists) {
             RejectedList.push(cardInfo)
         }
-        renderRejected();
+
+        interviewList = interviewList.filter(item => item.cardName !== cardInfo.cardName);
+        if (currentStatus == 'interview-filter-btn') {
+            renderInterview()
+        }
+
+
+
         calculateCount();
     }
 
