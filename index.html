@@ -22,11 +22,11 @@
     </style>
 </head>
 
-<body class="min-h-screen w-[1600px] mx-auto bg-base-300">
-    <header class="p-10 mx-[245px] sticky top-0 bg-base-200">
+<body class="min-h-screen w-full max-w-[1600px] mx-auto bg-base-300 px-4">
+    <header class="p-10 sm:mx-[100px] md:mx-[245px]">
         <h2 class="text-2xl text-neutral font-bold">Job Application Tracker</h2>
         <br>
-        <div class="grid grid-cols-3 ">
+        <div class=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  ">
             <div class="w-[300px] bg-base-100 rounded-md border border-gray-300 ">
                 <p class="mx-[20px]">Total</p>
                 <h2 id="total" class="mx-[20px] font-bold text-[24px]">0</h2>
@@ -47,13 +47,13 @@
         <br>
         <hr class="text-gray-300">
     </header>
-    <section class="px-10 mx-[245px]">
-        <div class="flex gap-210 ">
+    <section class="px-4 md:px-10 max-w-6xl mx-auto">
+        <div class=" grid grid-cols-1 md:grid-cols-2  ">
             <h3 class="text-neutral font-semibold">Available Jobs</h3>
-            <p class="text-[#64748B]"> 8 jobs</p>
+            <p class="text-[#64748B]"><span id="available">8 jobs</span> </p>
         </div>
         <br>
-        <div class="flex gap-4 ">
+        <div class=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 ">
             <button onclick="toggleStyle('all-filter-btn')" id="all-filter-btn"
                 class=" btn btn-info btn-soft bg-info text-base-100 w-[80px] h-[32px] rounded-md text-[12px] border border-gray-300">
                 All
@@ -68,43 +68,40 @@
         <section id="filtered-section" class="hidden">
 
         </section>
-        <div id="allCards" class="space-y-5">
-            <div class="allcard w-[1000px] h-[310px] bg-base-100 rounded-md">
-                <div class="mx-[20px] leading-relaxed">
-                    <div>
-                        <button class="mx-230 border border-base-200 p-2 rounded-full btn btn-base-200"><i
-                                class="fa-regular fa-trash-can"></i></button>
+        <div id="allCards" class="space-y-5 px-3 sm:px-6 md:px-10 ">
+            <div class="allcard w-full max-w-[1000px] min-h-[310px] h-auto bg-base-100 rounded-md">
+                <div class="mx-4 sm:mx-[20px] leading-relaxed py-4">
+                    <div class="flex justify-end">
+                        <button class="border border-base-200 p-2 rounded-full btn btn-base-200">
+                            <i class="fa-regular fa-trash-can"></i>
+                        </button>
                     </div>
                     <div>
-                        <h4 class="card text-neutral text-[18px] font-semibold">Mobile First Corp</h4>
+                        <h4 class="card text-neutral text-[16px] sm:text-[18px] font-semibold">Mobile First Corp</h4>
                         <h5 class="second text-[#64748B] font-semibold">React Native Developer</h5>
                         <br>
-
-                        <p class="dot text-[#64748B]">Remote • Full-time • $130,000 - $175,000</p>
+                        <p class="dot text-[#64748B] text-sm sm:text-base">Remote • Full-time • $130,000 - $175,000</p>
                         <br>
-
-                        <h3 class="status bg-sky-100 w-[113px] h-[36px] text-[14px] ">Not Applied</h3>
+                        <h3
+                            class="status bg-sky-100 w-[113px] h-[36px] text-[14px] flex items-center justify-center rounded">
+                            Not Applied</h3>
                         <br>
-
-
-                        <p class="para text-neutral">Build cross-platform mobile applications using React Native. Work
-                            on
-                            products used by millions of
-                            users worldwide.</p>
+                        <p class="para text-neutral text-sm sm:text-base">
+                            Build cross-platform mobile applications using React Native. Work on products used by
+                            millions of users worldwide.
+                        </p>
                         <br>
-
-
-                        <div class="flex flex-cols gap-4">
+                        <div class="flex flex-wrap gap-3 sm:gap-4 pb-4">
                             <button id="inter-btn"
-                                class="  btn btn-accent btn-soft text-accent w-[100px] h-[36px] border border-accent">interview</button>
+                                class="btn btn-accent btn-soft text-accent w-full sm:w-[100px] h-[36px] border border-accent">interview</button>
                             <button id="rbtn-one"
-                                class="btn btn-error btn-soft text-error w-[100px] h-[36px] border border-error">Rejected</button>
+                                class="btn btn-error btn-soft text-error w-full sm:w-[100px] h-[36px] border border-error">Rejected</button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="allcard w-[1000px] h-[310px] bg-base-100 rounded-md">
+            <div class="allcard w-full max-w-[1000px] min-h-[310px] h-auto bg-base-100 rounded-md">
                 <div class="mx-[20px] leading-relaxed">
                     <div>
                         <button class="mx-230 border border-base-200 p-2 rounded-full btn btn-base-200"><i
@@ -129,7 +126,7 @@
                         <br>
 
 
-                        <div class="flex flex-cols gap-4">
+                        <div class="flex flex-wrap gap-3 sm:gap-4 pb-4">
                             <button id="inter-btn"
                                 class="  btn btn-accent btn-soft text-accent w-[100px] h-[36px] border border-accent">interview</button>
                             <button id="rbtn-one"
@@ -138,7 +135,7 @@
                     </div>
                 </div>
             </div>
-            <div class="allcard w-[1000px] h-[310px] bg-base-100 rounded-md">
+            <div class="allcard w-full max-w-[1000px] min-h-[310px] h-auto bg-base-100 rounded-md">
                 <div class="mx-[20px] leading-relaxed">
                     <div>
                         <button class="mx-230 border border-base-200 p-2 rounded-full btn btn-base-200"><i
@@ -163,7 +160,7 @@
                         <br>
 
 
-                        <div class="flex flex-cols gap-4">
+                        <div class="flex flex-wrap gap-3 sm:gap-4 pb-4">
                             <button id="inter-btn"
                                 class="  btn btn-accent btn-soft text-accent w-[100px] h-[36px] border border-accent">interview</button>
                             <button id="rbtn-one"
@@ -172,7 +169,7 @@
                     </div>
                 </div>
             </div>
-            <div class="allcard  w-[1000px] h-[310px] bg-base-100 rounded-md">
+            <div class="allcard  w-full max-w-[1000px] min-h-[310px] h-auto bg-base-100 rounded-md">
                 <div class="mx-[20px] leading-relaxed">
                     <div>
                         <button class="mx-230 border border-base-200 p-2 rounded-full btn btn-base-200"><i
@@ -195,7 +192,7 @@
                         <br>
 
 
-                        <div class="flex flex-cols gap-4">
+                        <div class="flex flex-wrap gap-3 sm:gap-4 pb-4">
                             <button id="inter-btn"
                                 class="  btn btn-accent btn-soft text-accent w-[100px] h-[36px] border border-accent">interview</button>
                             <button id="rbtn-one"
@@ -204,7 +201,7 @@
                     </div>
                 </div>
             </div>
-            <div class="allcard  w-[1000px] h-[310px] bg-base-100 rounded-md">
+            <div class="allcard w-full max-w-[1000px] min-h-[310px] h-auto bg-base-100 rounded-md">
                 <div class="mx-[20px] leading-relaxed">
                     <div>
                         <button class="mx-230 border border-base-200 p-2 rounded-full btn btn-base-200"><i
@@ -229,7 +226,7 @@
                         <br>
 
 
-                        <div class="flex flex-cols gap-4">
+                        <div class="flex flex-wrap gap-3 sm:gap-4 pb-4">
                             <button id="inter-btn"
                                 class="  btn btn-accent btn-soft text-accent w-[100px] h-[36px] border border-accent">interview</button>
                             <button id="rbtn-one"
@@ -238,7 +235,7 @@
                     </div>
                 </div>
             </div>
-            <div class="allcard w-[1000px] h-[310px] bg-base-100 rounded-md">
+            <div class="allcard w-full max-w-[1000px] min-h-[310px] h-auto bg-base-100 rounded-md">
                 <div class="mx-[20px] leading-relaxed">
                     <div>
                         <button class="mx-230 border border-base-200 p-2 rounded-full btn btn-base-200"><i
@@ -263,7 +260,7 @@
                         <br>
 
 
-                        <div class="flex flex-cols gap-4">
+                        <div class="flex flex-wrap gap-3 sm:gap-4 pb-4">
                             <button id="inter-btn"
                                 class="  btn btn-accent btn-soft text-accent w-[100px] h-[36px] border border-accent">interview</button>
                             <button id="rbtn-one"
@@ -272,7 +269,7 @@
                     </div>
                 </div>
             </div>
-            <div class="allcard w-[1000px] h-[310px] bg-base-100 rounded-md">
+            <div class="allcard w-full max-w-[1000px] min-h-[310px] h-auto bg-base-100 rounded-md">
                 <div class="mx-[20px] leading-relaxed">
                     <div>
                         <button class="mx-230 border border-base-200 p-2 rounded-full btn btn-base-200"><i
@@ -297,7 +294,7 @@
                         <br>
 
 
-                        <div class="flex flex-cols gap-4">
+                        <div class="flex flex-wrap gap-3 sm:gap-4 pb-4">
                             <button id="inter-btn"
                                 class="  btn btn-accent btn-soft text-accent w-[100px] h-[36px] border border-accent">interview</button>
                             <button id="rbtn-one"
@@ -306,7 +303,7 @@
                     </div>
                 </div>
             </div>
-            <div class="allcard  w-[1000px] h-[310px] bg-base-100 rounded-md">
+            <div class="allcard w-full max-w-[1000px] min-h-[310px] h-auto bg-base-100 rounded-md">
                 <div class="mx-[20px] leading-relaxed">
                     <div>
                         <button class="mx-230 border border-base-200 p-2 rounded-full btn btn-base-200"><i
@@ -331,7 +328,7 @@
                         <br>
 
 
-                        <div class="flex flex-cols gap-4">
+                        <div class="flex flex-wrap gap-3 sm:gap-4 pb-4">
                             <button id="inter-btn"
                                 class="  btn btn-accent btn-soft text-accent w-[100px] h-[36px] border border-accent">interview</button>
                             <button id="rbtn-one"
@@ -344,58 +341,9 @@
 
         </div>
     </section>
-    <section>
-        <header class="p-10 mx-[245px]">
-            <h2 class="text-2xl text-neutral font-bold">Job Application Tracker</h2>
-            <br>
-            <div class="grid grid-cols-3 ">
-                <div class="w-[300px] bg-base-100 rounded-md border border-gray-300 ">
-                    <p class="mx-[20px]">Total</p>
-                    <h2 class="mx-[20px] font-bold text-[24px]">8</h2>
 
-                </div>
-                <div class="w-[300px] bg-base-100 rounded-md  border border-gray-300">
-                    <p class="mx-[20px] ">Interview</p>
-                    <h2 class="mx-[20px] font-bold text-[24px] text-success">0</h2>
 
-                </div>
-                <div class="w-[300px] bg-base-100 rounded-md border border-gray-300">
-                    <p class="mx-[20px]">Rejected</p>
-                    <h2 class="mx-[20px] font-bold text-[24px] text-error">0</h2>
-
-                </div>
-
-            </div>
-            <br>
-            <hr class="text-gray-300">
-        </header>
-        <section class="px-10 mx-[245px]">
-            <div class="flex gap-210 ">
-                <h3 class="text-neutral font-semibold">Available Jobs</h3>
-                <p class="text-[#64748B]"> 8 jobs</p>
-            </div>
-            <br>
-            <div class="flex gap-4 ">
-                <button class="bg-base-100 w-[80px] h-[32px] rounded-md text-[12px] border border-gray-300">
-                    All
-                </button>
-                <button
-                    class="bg-base-100 w-[80px] h-[32px] rounded-md text-[12px] border border-gray-300">Interview</button>
-                <button
-                    class="bg-base-100 w-[80px] h-[32px] rounded-md text-[12px] border border-gray-300">Rejected</button>
-            </div>
-            <br>
-            <div class="w-[1110px] h-[400px] bg-base-100 rounded-md">
-                <div>
-                    <img src="jobs.png" alt="" class="p-20 mx-105">
-                    <div class="text-center">
-                        <h2 class="font-semibold text-neutral">No jobs available</h2>
-                        <p class="text-[#64748B] text-[16px]">Check back soon for new job opportunities</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <script src="script/inter.js"></script>
+    <script src="script/inter.js"></script>
 </body>
 
 </html>

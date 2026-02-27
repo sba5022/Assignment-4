@@ -83,12 +83,14 @@ console.log(total);
 const allCardsSection = document.getElementById('allCards');
 const mainSection = document.querySelector('section');
 const filterSelection = document.getElementById('filtered-section');
+const availabestat = document.getElementById('availabe');
 console.log(mainSection);
 
 function calculateCount() {
     total.innerText = allCardsSection.children.length;
     interviewCount.innerText = interviewList.length;
     rejectedCount.innerText = RejectedList.length;
+
 };
 calculateCount();
 
@@ -201,9 +203,9 @@ function renderInterview() {
     for (let interview of interviewList) {
         console.log(interview);
         let div = document.createElement('div');
-        div.className = 'allcard w-[1000px] h-[310px] bg-base-100 rounded-md';
+        div.className = 'allcard w-full max-w-[1000px] min-h-[310px] h-auto bg-base-100 rounded-md';
         div.innerHTML = `
-     <div class="allcard w-[1000px] h-[310px] bg-base-100 rounded-md">
+     <div class="allcard w-full max-w-[1000px] min-h-[310px] h-auto bg-base-100 rounded-md">
                 <div class="mx-[20px] leading-relaxed">
                     <div>
                         <button class="mx-230 border border-base-200 p-2 rounded-full btn btn-base-200"><i
@@ -228,7 +230,7 @@ function renderInterview() {
                         <br>
 
 
-                        <div class="flex flex-cols gap-4">
+                        <div class="flex flex-wrap gap-3 sm:gap-4 pb-4">
                             <button id="inter-btn"
                                 class="  btn btn-accent btn-soft text-accent w-[100px] h-[36px] border border-accent">interview</button>
                             <button id="rbtn-one"
@@ -246,9 +248,9 @@ function renderRejected() {
     for (let Rejected of RejectedList) {
         console.log(Rejected);
         let div = document.createElement('div');
-        div.className = 'allcard w-[1000px] h-[310px] bg-base-100 rounded-md';
+        div.className = 'allcard w-full max-w-[1000px] min-h-[310px] h-auto bg-base-100 rounded-md';
         div.innerHTML = `
-     <div class="allcard w-[1000px] h-[310px] bg-base-100 rounded-md">
+     <div class="allcard w-full max-w-[1000px] min-h-[310px] h-auto bg-base-100 rounded-md">
                 <div class="mx-[20px] leading-relaxed">
                     <div>
                         <button class="mx-230 border border-base-200 p-2 rounded-full btn btn-base-200"><i
@@ -273,7 +275,7 @@ function renderRejected() {
                         <br>
 
 
-                        <div class="flex flex-cols gap-4">
+                        <div class="flex flex-wrap gap-3 sm:gap-4 pb-4">
                             <button id="inter-btn"
                                 class="  btn btn-accent btn-soft text-accent w-[100px] h-[36px] border border-accent">interview</button>
                             <button id="rbtn-one"
@@ -286,3 +288,7 @@ function renderRejected() {
         filterSelection.appendChild(div)
     }
 }
+
+
+
+
